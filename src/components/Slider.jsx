@@ -125,8 +125,34 @@ export default Slider;
 
 import React, { useState } from "react";
 import styled from "styled-components";
-import { sliderItems } from "../data";
+import banner from "../../public/static/images/banner.jpg";
+import banner2 from "../../public/static/images/banner2.jpg";
+import banner3 from "../../public/static/images/banner3.jpg";
 import { mobile } from "../responsive";
+
+const sliderItems = [
+  {
+    id: 1,
+    img: banner,
+    title: "SUMMER SALE",
+    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    bg: "f5fafd",
+  },
+  {
+    id: 2,
+    img: banner2,
+    title: "AUTUMN COLLECTION",
+    desc: "GET READY FOR THE AUTUMN SEASON WITH OUR LATEST COLLECTION.",
+    bg: "fcf1ed",
+  },
+  {
+    id: 3,
+    img: banner3,
+    title: "LOUNGEWEAR LOVE",
+    desc: "COMFORT MEETS STYLE! GET 20% OFF ON LOUNGEWEAR.",
+    bg: "fbf0f4",
+  },
+];
 
 const Container = styled.div`
   width: 100%;
@@ -202,7 +228,6 @@ const Button = styled.button`
   font-size: 20px;
   background-color: transparent;
   cursor: pointer;
-  z-index: 5;
 `;
 
 const Slider = () => {
@@ -210,9 +235,9 @@ const Slider = () => {
 
   const handleClick = (direction) => {
     if (direction === "left") {
-      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : sliderItems.length - 1);
     } else {
-      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+      setSlideIndex(slideIndex < sliderItems.length - 1 ? slideIndex + 1 : 0);
     }
   };
 
